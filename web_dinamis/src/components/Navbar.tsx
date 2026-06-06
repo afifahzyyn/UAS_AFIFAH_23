@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-
 const NAV_ITEMS = [
   { label: "Beranda", href: "/#hero" },
   { label: "Menu", href: "/#menu" },
   { label: "Tentang", href: "/#about" },
   { label: "Berita", href: "/#berita" },
-  { label: "Kontak", href: "/#contact" },
 ];
 
 export default function Navbar() {

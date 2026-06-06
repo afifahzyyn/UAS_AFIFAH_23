@@ -22,7 +22,7 @@ const LogoutIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
 );
 const CoffeeIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A574" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0891b2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
     <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
     <line x1="6" y1="2" x2="6" y2="4" />
@@ -66,7 +66,6 @@ function AdminShell({ children }: { children: React.ReactNode }) {
     { name: "Overview", href: "/admin", icon: LayoutIcon },
     { name: "Berita", href: "/admin/berita", icon: NewspaperIcon },
     { name: "Menu", href: "/admin/menu", icon: CoffeeIcon },
-    { name: "Kontak", href: "/admin/kontak", icon: MessageIcon },
   ];
 
   const activeName = navItems.find(
@@ -90,7 +89,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
       <aside className={`admin-sidebar ${sidebarOpen ? "admin-sidebar--open" : ""}`}>
         <div className="admin-sidebar-logo">
           <CoffeeIcon />
-          <span>Kopi <span style={{ color: "#D4A574" }}>Nusantara</span></span>
+          <span>Kopi <span style={{ color: "#0891b2" }}>Nusantara</span></span>
           {/* Close button inside sidebar (mobile) */}
           <button
             className="admin-close-btn"

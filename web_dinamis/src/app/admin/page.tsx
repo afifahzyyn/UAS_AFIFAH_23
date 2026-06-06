@@ -6,28 +6,26 @@ export const dynamic = "force-dynamic";
 export default async function AdminDashboard() {
   const beritaCount = await query<any>("SELECT COUNT(*) as total FROM berita");
   const menuCount = await query<any>("SELECT COUNT(*) as total FROM menu");
-  const unreadKontak = await query<any>("SELECT COUNT(*) as total FROM kontak WHERE is_read = 0");
-  const totalKontak = await query<any>("SELECT COUNT(*) as total FROM kontak");
+  const menuAvailable = await query<any>("SELECT COUNT(*) as total FROM menu WHERE is_available = 1");
 
   const stats = [
-    { name: "Total Menu", value: menuCount[0]?.total ?? 0, href: "/admin/menu", color: "#D4A574", bg: "#fdf8f2", border: "#f5e6d3" },
+    { name: "Total Menu", value: menuCount[0]?.total ?? 0, href: "/admin/menu", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
+    { name: "Menu Tersedia", value: menuAvailable[0]?.total ?? 0, href: "/admin/menu", color: "#059669", bg: "#f0fdf4", border: "#bbf7d0" },
     { name: "Total Berita", value: beritaCount[0]?.total ?? 0, href: "/admin/berita", color: "#2563eb", bg: "#eff6ff", border: "#bfdbfe" },
-    { name: "Pesan Belum Dibaca", value: unreadKontak[0]?.total ?? 0, href: "/admin/kontak", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
-    { name: "Total Pesan Masuk", value: totalKontak[0]?.total ?? 0, href: "/admin/kontak", color: "#059669", bg: "#f0fdf4", border: "#bbf7d0" },
   ];
 
   const recentBerita = await query<any>(
     "SELECT id, judul, is_published, created_at FROM berita ORDER BY created_at DESC LIMIT 5"
   );
-  const recentKontak = await query<any>(
-    "SELECT id, nama, email, subjek, is_read, created_at FROM kontak ORDER BY created_at DESC LIMIT 5"
+  const recentMenu = await query<any>(
+    "SELECT id, nama, kategori, harga, is_available FROM menu ORDER BY created_at DESC LIMIT 5"
   );
 
   return (
     <div>
       <div style={{ marginBottom: "28px" }}>
         <h2 style={{ fontSize: "22px", fontWeight: 800, color: "#0f172a", marginBottom: "6px" }}>
-          Selamat Datang 👋
+          Selamat Datang ☕
         </h2>
         <p style={{ color: "#64748b", fontSize: "14px" }}>
           Berikut adalah ringkasan konten website Kopi Nusantara Anda.
@@ -81,27 +79,26 @@ export default async function AdminDashboard() {
           </div>
         </div>
 
-        {/* Recent Kontak */}
+        {/* Recent Menu */}
         <div className="admin-card">
           <div style={{ padding: "20px 24px", borderBottom: "1px solid #f1f5f9", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ fontSize: "15px", fontWeight: 700, color: "#0f172a" }}>Pesan Terbaru</div>
-            <Link href="/admin/kontak" className="admin-btn admin-btn-secondary" style={{ padding: "6px 14px", fontSize: "12px" }}>Lihat Semua</Link>
+            <div style={{ fontSize: "15px", fontWeight: 700, color: "#0f172a" }}>Menu Terbaru</div>
+            <Link href="/admin/menu/create" className="admin-btn admin-btn-primary" style={{ padding: "6px 14px", fontSize: "12px" }}>+ Tambah</Link>
           </div>
           <div>
-            {recentKontak.length === 0 ? (
-              <div style={{ padding: "32px", textAlign: "center", color: "#94a3b8", fontSize: "14px" }}>Belum ada pesan.</div>
-            ) : recentKontak.map((k: any) => (
-              <div key={k.id} style={{ padding: "14px 24px", borderBottom: "1px solid #f8fafc", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            {recentMenu.length === 0 ? (
+              <div style={{ padding: "32px", textAlign: "center", color: "#94a3b8", fontSize: "14px" }}>Belum ada menu.</div>
+            ) : recentMenu.map((m: any) => (
+              <div key={m.id} style={{ padding: "14px 24px", borderBottom: "1px solid #f8fafc", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                    {!k.is_read && <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#3b82f6", display: "inline-block", flexShrink: 0 }} />}
-                    <div style={{ fontSize: "13px", fontWeight: k.is_read ? 500 : 700, color: "#1e293b", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{k.nama}</div>
+                  <div style={{ fontSize: "13px", fontWeight: 600, color: "#1e293b", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.nama}</div>
+                  <div style={{ fontSize: "11px", color: "#94a3b8", marginTop: "2px" }}>
+                    {m.kategori} — Rp {Number(m.harga).toLocaleString("id-ID")}
                   </div>
-                  <div style={{ fontSize: "11px", color: "#94a3b8", marginTop: "2px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{k.email}</div>
                 </div>
-                <div style={{ fontSize: "11px", color: "#94a3b8", marginLeft: "12px", flexShrink: 0 }}>
-                  {new Date(k.created_at).toLocaleDateString("id-ID")}
-                </div>
+                <span className={`admin-badge ${m.is_available ? "admin-badge-green" : "admin-badge-gray"}`} style={{ marginLeft: "12px", flexShrink: 0 }}>
+                  {m.is_available ? "Tersedia" : "Habis"}
+                </span>
               </div>
             ))}
           </div>

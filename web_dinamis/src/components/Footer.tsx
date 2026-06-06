@@ -27,11 +27,10 @@ export default function Footer() {
             <span>Snack</span>
           </div>
           <div className="footer-col">
-            <h4>Kontak</h4>
-            <span>info@kopinusantara.id</span>
-            <span>+62 812 3456 7890</span>
+            <h4>Jam Operasional</h4>
+            <span>Setiap Hari</span>
+            <span>08.00 - 22.00 WIB</span>
             <span>Jakarta, Indonesia</span>
-            <span>Buka: 08.00 - 22.00 WIB</span>
           </div>
         </div>
       </div>
