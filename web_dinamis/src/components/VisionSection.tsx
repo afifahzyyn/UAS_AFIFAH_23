@@ -1,87 +1,60 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLHeadingElement>(null);
+export default function VisionSection() {
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = sectionRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          let start = 0;
-          const duration = 2000;
-          const stepTime = Math.max(Math.floor(duration / target), 16);
-          const timer = setInterval(() => {
-            start += Math.ceil(target / (duration / stepTime));
-            if (start >= target) {
-              start = target;
-              clearInterval(timer);
-            }
-            setCount(start);
-          }, stepTime);
-          observer.disconnect();
-        }
+        if (entry.isIntersecting) el.classList.add("fade-in--visible");
       },
-      { threshold: 0.5 }
+      { threshold: 0.15 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [target]);
+  }, []);
 
   return (
-    <h4 ref={ref} className="stat-number">
-      {count.toLocaleString("id-ID")}
-      {suffix}
-    </h4>
-  );
-}
+    <section id="about" className="about-section fade-in" ref={sectionRef}>
+      <div className="about-inner">
+        <div className="about-image">
+          <img src="/cafe-interior.png" alt="Interior Kopi Nusantara" />
+        </div>
 
-export default function VisionSection() {
-  return (
-    <section id="about" className="about-section">
-      <div className="vision-flex">
-        <div className="vision-text">
-          <span className="hero-tagline" style={{ opacity: 1, transform: "none", fontSize: "0.85rem" }}>
-            Cerita Kami
-          </span>
-          <h2 className="vision-heading">
+        <div className="about-text">
+          <span className="about-label">🌷 Cerita Kami</span>
+          <h2 className="about-heading">
             Tentang <span className="text-gradient">Kopi Nusantara</span>
           </h2>
-          <p className="vision-desc">
+          <p className="about-desc">
             Berawal dari kecintaan terhadap kopi Indonesia, Kopi Nusantara hadir
-            untuk menghadirkan pengalaman ngopi yang autentik. Kami bekerja
-            langsung dengan petani kopi lokal dari Aceh hingga Papua untuk
-            mendapatkan biji kopi terbaik yang disangrai dengan penuh perhatian.
+            untuk menghadirkan pengalaman ngopi yang autentik dan nyaman. Kami
+            bekerja langsung dengan petani kopi lokal dari Aceh hingga Papua
+            untuk mendapatkan biji kopi terbaik.
           </p>
-          <p className="vision-desc" style={{ marginBottom: "3rem" }}>
+          <p className="about-desc">
             Setiap cangkir kopi kami adalah perjalanan rasa melintasi kepulauan
             Nusantara — dari aroma earthy Sumatra, keasaman fruity Toraja,
             hingga kelembutan Java.
           </p>
-          <div className="stats-row">
-            <div className="stat">
-              <AnimatedCounter target={2020} />
-              <span className="stat-label">Berdiri Sejak</span>
+
+          <div className="about-features">
+            <div className="about-feature">
+              <div className="about-feature__icon">☕</div>
+              <span>Biji Kopi Lokal Premium</span>
             </div>
-            <div className="stat">
-              <AnimatedCounter target={15} suffix="+" />
-              <span className="stat-label">Varian Menu</span>
+            <div className="about-feature">
+              <div className="about-feature__icon">🍰</div>
+              <span>Dessert Homemade</span>
             </div>
-            <div className="stat">
-              <AnimatedCounter target={5000} suffix="+" />
-              <span className="stat-label">Pelanggan</span>
+            <div className="about-feature">
+              <div className="about-feature__icon">🌿</div>
+              <span>Suasana Nyaman</span>
             </div>
-          </div>
-        </div>
-        <div className="vision-visual">
-          <div className="coffee-cup-visual">
-            <div className="coffee-ring coffee-ring--outer" />
-            <div className="coffee-ring coffee-ring--inner" />
-            <div className="coffee-core">☕</div>
           </div>
         </div>
       </div>

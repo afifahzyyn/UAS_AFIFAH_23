@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  console.log("force cache bust for princess theme v2");
   const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,111 +34,117 @@ export default function LoginPage() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "radial-gradient(ellipse at 20% 50%, rgba(30,64,175,0.4) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.25) 0%, transparent 50%), #050510",
+      background: "linear-gradient(160deg, #fdf8f5 0%, #fce8ee 30%, #f0e4f3 60%, #fdf8f5 100%)",
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       position: "relative",
       overflow: "hidden",
     }}>
-      {/* Animated floating orbs */}
+      {/* Decorative floating orbs */}
       <div style={{
-        position: "absolute", top: "10%", left: "15%",
-        width: "400px", height: "400px",
-        background: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)",
-        borderRadius: "50%", animation: "float1 8s ease-in-out infinite",
+        position: "absolute", top: "10%", left: "10%",
+        width: "350px", height: "350px",
+        background: "radial-gradient(circle, rgba(212,132,154,0.12) 0%, transparent 70%)",
+        borderRadius: "50%", animation: "float1 10s ease-in-out infinite",
         pointerEvents: "none",
       }} />
       <div style={{
         position: "absolute", bottom: "10%", right: "10%",
-        width: "350px", height: "350px",
-        background: "radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)",
-        borderRadius: "50%", animation: "float2 10s ease-in-out infinite",
+        width: "300px", height: "300px",
+        background: "radial-gradient(circle, rgba(184,152,200,0.1) 0%, transparent 70%)",
+        borderRadius: "50%", animation: "float2 12s ease-in-out infinite",
         pointerEvents: "none",
       }} />
-      {/* Grid lines */}
+      {/* Petal decorations */}
       <div style={{
-        position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
-        backgroundSize: "60px 60px",
+        position: "absolute", top: "20%", right: "25%",
+        width: "14px", height: "14px",
+        background: "#f8dce5",
+        borderRadius: "50% 0 50% 50%",
+        opacity: 0.4,
+        animation: "float1 8s ease-in-out infinite",
+        pointerEvents: "none",
+      }} />
+      <div style={{
+        position: "absolute", bottom: "30%", left: "20%",
+        width: "10px", height: "10px",
+        background: "#efe4f5",
+        borderRadius: "50% 0 50% 50%",
+        opacity: 0.35,
+        animation: "float2 9s ease-in-out infinite",
         pointerEvents: "none",
       }} />
 
       <style>{`
-        @keyframes float1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
-        @keyframes float2 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(20px) scale(0.95)} }
-        @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-        @keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-        .login-btn:hover { background: linear-gradient(135deg, #2563eb, #0ea5e9) !important; transform: translateY(-2px) !important; box-shadow: 0 20px 40px rgba(59,130,246,0.4) !important; }
+        @keyframes float1 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-20px) scale(1.03)} }
+        @keyframes float2 { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(15px) scale(0.97)} }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes spin { to{transform:rotate(360deg)} }
+        .login-btn:hover { background: linear-gradient(135deg, #b898c8, #d4849a) !important; transform: translateY(-2px) !important; box-shadow: 0 12px 32px rgba(212,132,154,0.35) !important; }
         .login-btn:active { transform: translateY(0) !important; }
         .login-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
       `}</style>
 
       {/* Card */}
       <div style={{
-        width: "100%", maxWidth: "440px",
+        width: "100%", maxWidth: "420px",
         margin: "20px",
         animation: "fadeUp 0.6s ease forwards",
         position: "relative", zIndex: 10,
       }}>
         <div style={{
-          background: "rgba(255,255,255,0.04)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          borderRadius: "24px",
-          padding: "48px 44px",
-          boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05) inset",
+          background: "rgba(255,255,255,0.75)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(212,132,154,0.15)",
+          borderRadius: "28px",
+          padding: "44px 40px",
+          boxShadow: "0 20px 60px rgba(180,130,150,0.12), 0 0 0 1px rgba(255,255,255,0.5) inset",
           position: "relative",
           overflow: "hidden",
         }}>
-          {/* Top glow bar */}
+          {/* Top gradient bar */}
           <div style={{
             position: "absolute", top: 0, left: 0, right: 0, height: "3px",
-            background: "linear-gradient(90deg, transparent, #3b82f6, #06b6d4, transparent)",
-          }} />
-          {/* Shimmer overlay */}
-          <div style={{
-            position: "absolute", inset: 0, borderRadius: "24px",
-            background: "linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 50%, rgba(255,255,255,0.02) 100%)",
-            pointerEvents: "none",
+            background: "linear-gradient(90deg, transparent, #d4849a, #b898c8, transparent)",
+            borderRadius: "28px 28px 0 0",
           }} />
 
           {/* Header */}
-          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+          <div style={{ textAlign: "center", marginBottom: "36px" }}>
             {/* Logo icon */}
             <div style={{
-              width: "72px", height: "72px",
-              background: "linear-gradient(135deg, rgba(59,130,246,0.2), rgba(6,182,212,0.1))",
-              border: "1px solid rgba(59,130,246,0.3)",
+              width: "68px", height: "68px",
+              background: "linear-gradient(135deg, rgba(212,132,154,0.15), rgba(184,152,200,0.1))",
+              border: "1px solid rgba(212,132,154,0.2)",
               borderRadius: "20px",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px",
-              boxShadow: "0 0 30px rgba(59,130,246,0.2)",
+              margin: "0 auto 18px",
+              boxShadow: "0 4px 16px rgba(212,132,154,0.12)",
+              fontSize: "28px",
             }}>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
+              🌸
             </div>
 
             <h1 style={{
-              fontSize: "28px", fontWeight: 800, margin: "0 0 8px",
-              background: "linear-gradient(135deg, #fff 0%, #94a3b8 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent",
-              backgroundClip: "text", letterSpacing: "-0.5px",
+              fontSize: "26px", fontWeight: 800, margin: "0 0 6px",
+              fontFamily: "'Playfair Display', Georgia, serif",
+              color: "#3d2c35",
+              letterSpacing: "-0.5px",
             }}>
-              Digi<span style={{ WebkitTextFillColor: "#60a5fa", backgroundImage: "none" }}>Tech</span>
+              Kopi <span style={{ background: "linear-gradient(135deg, #d4849a, #b898c8)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Nusantara</span>
             </h1>
-            <p style={{ color: "#64748b", fontSize: "14px", margin: 0, letterSpacing: "0.3px" }}>
-              Secure Admin Area
+            <p style={{ color: "#8a7080", fontSize: "13px", margin: 0, letterSpacing: "0.3px" }}>
+              Admin Dashboard
             </p>
           </div>
 
           {/* Error box */}
           {error && (
             <div style={{
-              background: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)",
-              borderRadius: "12px", padding: "12px 16px",
-              color: "#fca5a5", fontSize: "13px", textAlign: "center",
-              marginBottom: "24px",
+              background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)",
+              borderRadius: "14px", padding: "12px 16px",
+              color: "#dc2626", fontSize: "13px", textAlign: "center",
+              marginBottom: "22px",
             }}>
               ⚠️ {error}
             </div>
@@ -145,16 +152,16 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit}>
             {/* Username */}
-            <div style={{ marginBottom: "20px" }}>
+            <div style={{ marginBottom: "18px" }}>
               <label style={{
                 display: "block", fontSize: "11px", fontWeight: 600,
-                color: "#475569", textTransform: "uppercase", letterSpacing: "1px",
+                color: "#8a7080", textTransform: "uppercase", letterSpacing: "1px",
                 marginBottom: "8px",
               }}>Username</label>
               <div style={{ position: "relative" }}>
                 <span style={{
                   position: "absolute", left: "16px", top: "50%", transform: "translateY(-50%)",
-                  color: focusUser ? "#60a5fa" : "#475569", transition: "color 0.2s",
+                  color: focusUser ? "#d4849a" : "#b8a0aa", transition: "color 0.2s",
                 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
@@ -168,13 +175,13 @@ export default function LoginPage() {
                   placeholder="Masukkan username"
                   style={{
                     width: "100%", boxSizing: "border-box",
-                    background: "rgba(0,0,0,0.3)",
-                    border: `1px solid ${focusUser ? "rgba(59,130,246,0.6)" : "rgba(255,255,255,0.08)"}`,
-                    borderRadius: "12px",
-                    padding: "14px 16px 14px 44px",
-                    color: "#e2e8f0", fontSize: "14px",
+                    background: "rgba(253,248,245,0.8)",
+                    border: `1.5px solid ${focusUser ? "rgba(212,132,154,0.5)" : "rgba(212,132,154,0.15)"}`,
+                    borderRadius: "14px",
+                    padding: "13px 16px 13px 44px",
+                    color: "#3d2c35", fontSize: "14px",
                     outline: "none",
-                    boxShadow: focusUser ? "0 0 0 3px rgba(59,130,246,0.15)" : "none",
+                    boxShadow: focusUser ? "0 0 0 3px rgba(212,132,154,0.1)" : "none",
                     transition: "all 0.2s",
                   }}
                 />
@@ -182,16 +189,16 @@ export default function LoginPage() {
             </div>
 
             {/* Password */}
-            <div style={{ marginBottom: "32px" }}>
+            <div style={{ marginBottom: "28px" }}>
               <label style={{
                 display: "block", fontSize: "11px", fontWeight: 600,
-                color: "#475569", textTransform: "uppercase", letterSpacing: "1px",
+                color: "#8a7080", textTransform: "uppercase", letterSpacing: "1px",
                 marginBottom: "8px",
               }}>Password</label>
               <div style={{ position: "relative" }}>
                 <span style={{
                   position: "absolute", left: "16px", top: "50%", transform: "translateY(-50%)",
-                  color: focusPass ? "#60a5fa" : "#475569", transition: "color 0.2s",
+                  color: focusPass ? "#d4849a" : "#b8a0aa", transition: "color 0.2s",
                 }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
@@ -205,20 +212,20 @@ export default function LoginPage() {
                   placeholder="Masukkan password"
                   style={{
                     width: "100%", boxSizing: "border-box",
-                    background: "rgba(0,0,0,0.3)",
-                    border: `1px solid ${focusPass ? "rgba(59,130,246,0.6)" : "rgba(255,255,255,0.08)"}`,
-                    borderRadius: "12px",
-                    padding: "14px 48px 14px 44px",
-                    color: "#e2e8f0", fontSize: "14px",
+                    background: "rgba(253,248,245,0.8)",
+                    border: `1.5px solid ${focusPass ? "rgba(212,132,154,0.5)" : "rgba(212,132,154,0.15)"}`,
+                    borderRadius: "14px",
+                    padding: "13px 48px 13px 44px",
+                    color: "#3d2c35", fontSize: "14px",
                     outline: "none",
-                    boxShadow: focusPass ? "0 0 0 3px rgba(59,130,246,0.15)" : "none",
+                    boxShadow: focusPass ? "0 0 0 3px rgba(212,132,154,0.1)" : "none",
                     transition: "all 0.2s",
                   }}
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} style={{
                   position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)",
                   background: "none", border: "none", cursor: "pointer",
-                  color: "#475569", padding: "4px",
+                  color: "#b8a0aa", padding: "4px",
                   display: "flex", alignItems: "center",
                 }}>
                   {showPassword ? (
@@ -236,13 +243,13 @@ export default function LoginPage() {
 
             {/* Submit */}
             <button type="submit" disabled={loading} className="login-btn" style={{
-              width: "100%", padding: "15px",
-              background: "linear-gradient(135deg, #2563eb 0%, #0284c7 100%)",
-              border: "none", borderRadius: "12px",
-              color: "#fff", fontSize: "15px", fontWeight: 700,
+              width: "100%", padding: "14px",
+              background: "linear-gradient(135deg, #d4849a 0%, #b898c8 100%)",
+              border: "none", borderRadius: "14px",
+              color: "#fff", fontSize: "14px", fontWeight: 700,
               cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: "10px",
-              boxShadow: "0 8px 24px rgba(37,99,235,0.35)",
-              transition: "all 0.2s ease",
+              boxShadow: "0 6px 20px rgba(212,132,154,0.3)",
+              transition: "all 0.3s ease",
               letterSpacing: "0.3px",
             }}>
               {loading ? (
@@ -263,8 +270,8 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p style={{ textAlign: "center", marginTop: "24px", color: "#334155", fontSize: "12px" }}>
-            © 2026 DigiTech • Secure Control Panel
+          <p style={{ textAlign: "center", marginTop: "22px", color: "#b8a0aa", fontSize: "12px" }}>
+            © 2026 Kopi Nusantara • Admin Panel
           </p>
         </div>
       </div>

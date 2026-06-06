@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+
 const NAV_ITEMS = [
   { label: "Beranda", href: "/#hero" },
   { label: "Menu", href: "/#menu" },
-  { label: "Tentang", href: "/#about" },
   { label: "Berita", href: "/#berita" },
 ];
 
@@ -32,6 +32,9 @@ export default function Navbar() {
             <Link href={item.href}>{item.label}</Link>
           </li>
         ))}
+        <li>
+          <Link href="/login" className="nav-login-link">Login Admin</Link>
+        </li>
       </ul>
 
       {/* Hamburger */}
@@ -53,6 +56,9 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+          <Link href="/login" className="mobile-menu__link">
+            Login Admin
+          </Link>
         </div>
       )}
     </nav>

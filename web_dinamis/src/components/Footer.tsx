@@ -7,8 +7,8 @@ export default function Footer() {
         <div className="footer-brand">
           <Link href="/" className="logo">Kopi Nusantara</Link>
           <p className="footer-tagline">
-            Menghadirkan cita rasa autentik kopi Indonesia dengan sentuhan modern.
-            Setiap cangkir adalah cerita dari Nusantara.
+            Menghadirkan cita rasa autentik kopi Indonesia dengan sentuhan
+            modern. Setiap cangkir adalah cerita manis dari Nusantara. 🌸
           </p>
         </div>
         <div className="footer-links">
@@ -36,7 +36,9 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <p>&copy; 2026 Kopi Nusantara. Semua hak dilindungi undang-undang.</p>
-        <p className="footer-credit">Project by Afifah Zayyin</p>
+        <p className="footer-credit">
+          Made with <span className="footer-heart">♥</span> by Afifah Zayyin
+        </p>
       </div>
     </footer>
   );

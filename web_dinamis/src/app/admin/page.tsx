@@ -9,9 +9,9 @@ export default async function AdminDashboard() {
   const menuAvailable = await query<any>("SELECT COUNT(*) as total FROM menu WHERE is_available = 1");
 
   const stats = [
-    { name: "Total Menu", value: menuCount[0]?.total ?? 0, href: "/admin/menu", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
-    { name: "Menu Tersedia", value: menuAvailable[0]?.total ?? 0, href: "/admin/menu", color: "#059669", bg: "#f0fdf4", border: "#bbf7d0" },
-    { name: "Total Berita", value: beritaCount[0]?.total ?? 0, href: "/admin/berita", color: "#2563eb", bg: "#eff6ff", border: "#bfdbfe" },
+    { name: "Total Menu", value: menuCount[0]?.total ?? 0, href: "/admin/menu", color: "#d4849a", bg: "#f8dce5", border: "rgba(212,132,154,0.3)" },
+    { name: "Menu Tersedia", value: menuAvailable[0]?.total ?? 0, href: "/admin/menu", color: "#b898c8", bg: "#efe4f5", border: "rgba(184,152,200,0.3)" },
+    { name: "Total Berita", value: beritaCount[0]?.total ?? 0, href: "/admin/berita", color: "#e8b4b8", bg: "#fef5f8", border: "rgba(232,180,184,0.3)" },
   ];
 
   const recentBerita = await query<any>(

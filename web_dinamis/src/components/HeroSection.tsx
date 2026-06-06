@@ -20,40 +20,42 @@ export default function HeroSection() {
 
   return (
     <section id="hero" className="hero" ref={sectionRef}>
-      <div className="floating-accent" style={{ top: "15%", left: "5%" }} />
-      <div className="floating-accent floating-accent--alt" style={{ bottom: "15%", right: "10%" }} />
+      {/* Decorative petals */}
+      <div className="petal" style={{ top: "15%", left: "8%" }} />
+      <div className="petal" style={{ top: "25%", left: "75%" }} />
+      <div className="petal" style={{ top: "65%", left: "90%" }} />
 
-      <span className="hero-tagline">☕ Authentic Indonesian Coffee</span>
-      <h1 className="hero-title">
-        Rasakan Kehangatan
-        <br />
-        <span className="hero-title--gradient">Kopi Nusantara</span>
-      </h1>
-      <p className="hero-description">
-        Dari dataran tinggi Indonesia ke cangkir Anda. Kami menyajikan kopi
-        terbaik dengan cinta, ditemani suasana yang memanjakan setiap momen.
-      </p>
-      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
-        <a href="#menu" className="cta-button cta-button--filled">
-          Lihat Menu
-        </a>
-        <a href="#contact" className="cta-button">
-          Hubungi Kami
-        </a>
-      </div>
+      <div className="hero-inner">
+        <div className="hero-content">
+          <span className="hero-tagline">🌸 Welcome to our cafe</span>
+          <h1 className="hero-title">
+            <span className="hero-title--gradient">Kopi Nusantara</span>
+          </h1>
+          <p className="hero-description">
+            Tempat menikmati kopi terbaik dan menciptakan cerita manis setiap hari.
+          </p>
+          <a href="#menu" className="cta-button cta-button--filled">
+            ☕ Lihat Menu
+          </a>
 
-      <div className="hero-decorative">
-        <div className="hero-decorative__item">
-          <div className="hero-decorative__number">100%</div>
-          <div className="hero-decorative__label">Biji Lokal</div>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <div className="hero-stat__number">100%</div>
+              <div className="hero-stat__label">Biji Lokal</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat__number">15+</div>
+              <div className="hero-stat__label">Varian Menu</div>
+            </div>
+            <div className="hero-stat">
+              <div className="hero-stat__number">♥</div>
+              <div className="hero-stat__label">Dibuat Dengan Cinta</div>
+            </div>
+          </div>
         </div>
-        <div className="hero-decorative__item">
-          <div className="hero-decorative__number">15+</div>
-          <div className="hero-decorative__label">Varian Menu</div>
-        </div>
-        <div className="hero-decorative__item">
-          <div className="hero-decorative__number">♥</div>
-          <div className="hero-decorative__label">Dibuat Dengan Cinta</div>
+
+        <div className="hero-image">
+          <img src="/hero-cafe.png" alt="Kopi dan dessert aesthetic" />
         </div>
       </div>
     </section>
