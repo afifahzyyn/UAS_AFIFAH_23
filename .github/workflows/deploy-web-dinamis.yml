@@ -42,7 +42,7 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
           script: |
-            cd /home/ubuntu/container-dinamis/uasweb-dinamis
+            cd /home/ubuntu/container-dinamis/web_dinamis
             docker pull afifahzyyn/uas_webdinamis_32:latest
             DOCKERHUB_USERNAME=afifahzyyn docker compose up -d --force-recreate --no-deps container-dinamis
             docker image prune -af
