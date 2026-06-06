@@ -42,7 +42,13 @@ jobs:
           key: ${{ secrets.AWS_PRIVATE_KEY }}
           port: 22
           script: |
+            mkdir -p /home/ubuntu/container-dinamis/web_dinamis
             cd /home/ubuntu/container-dinamis/web_dinamis
+            if [ ! -f "docker-compose.yml" ]; then
+              git clone https://github.com/afifahzyyn/UAS_AFIFAH_23.git .
+            else
+              git pull
+            fi
             docker pull afifahzyyn/uas_webdinamis_32:latest
             DOCKERHUB_USERNAME=afifahzyyn docker compose up -d --force-recreate --no-deps container-dinamis
             docker image prune -af
