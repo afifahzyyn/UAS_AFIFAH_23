@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'web-statis/**'
+      - 'web_statis/**'
       - '.github/workflows/deploy.yaml'
 jobs:
   build-and-deploy:
