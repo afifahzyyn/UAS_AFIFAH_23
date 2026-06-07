@@ -22,7 +22,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
       <Link href="/" className="logo">
-        Kopi kenangan
+        Kopi Nusantara
       </Link>
 
       {/* Desktop */}
