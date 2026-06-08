@@ -29,7 +29,7 @@ export default function HeroSection() {
         <div className="hero-content">
           <span className="hero-tagline">🌸 Welcome to our cafe</span>
           <h1 className="hero-title">
-            <span className="hero-title--gradient">Kopi Nusantara</span>
+            <span className="hero-title--gradient">afifah zayyin_2388010032</span>
           </h1>
           <p className="hero-description">
             Tempat menikmati kopi terbaik dan menciptakan cerita manis setiap hari.
